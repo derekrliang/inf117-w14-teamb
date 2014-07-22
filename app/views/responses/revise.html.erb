@@ -1,0 +1,71 @@
+<span class="section-header"><%= @response.category.title %> Sentence Revision</span>
+
+<hr>
+
+<%= image_tag @response.question.image_url, class: 'img-thumbnail center-div img-responsive' %>
+
+<hr>
+
+<h3>Best Sentence</h3>
+
+<ul class="list-group">
+  <li class="list-group-item" style="background-color: rgb(211, 238, 211);">
+    <span class="badge">Sentence</span>
+    <%= @response.send("sentence#{@response.best_sentence}")%>
+  </li>
+  
+  <li class="list-group-item">
+    <span class="badge">Feedback</span>
+    <%= @response.best_sentence_feedback %>
+  </li>
+</ul>
+
+<h3>Worst Sentence</h3>
+
+<ul class="list-group">
+  <li class="list-group-item" style="background-color: rgb(248, 221, 221);">
+    <span class="badge">Sentence</span>
+    <%= @response.send("sentence#{@response.worst_sentence}")%>
+  </li>
+  
+  <li class="list-group-item">
+    <span class="badge">Feedback</span>
+    <%= @response.worst_sentence_feedback %>
+  </li>
+</ul>
+
+<hr>
+
+<%= form_for @response do |f| %>
+  <h3>You can revise your sentences below</h3>
+  
+  <div class="well well-small">
+    <% if @response.errors.any? %>
+      <div class="alert">
+        <h4><%= pluralize @response.errors.count, 'Error' %></h4>
+        <ul>
+          <% @response.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="form-group">
+      <%= f.label 'Sentence A' %>
+      <%= f.text_field :revised_sentence1, class: 'form-control', value: @response.sentence1 %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label 'Sentence B' %>
+      <%= f.text_field :revised_sentence2, class: 'form-control', value: @response.sentence2 %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label 'Sentence C' %>
+      <%= f.text_field :revised_sentence3, class: 'form-control', value: @response.sentence3 %>
+    </div>
+
+    <%= f.submit 'Submit to Teacher', :class => 'btn btn-default' %>
+  </div>
+<% end %>

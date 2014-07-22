@@ -1,0 +1,19 @@
+<%= form_for(@announcement) do |f| %>
+    <% if @announcement.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@announcement.errors.count, "error") %> prohibited this announcement from being saved:</h2>
+          <ul>
+            <% @announcement.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :content %><br>
+      <%= f.text_area :content, :cols => "50", :rows => "10"%>
+    </div>
+    
+    <%= f.submit 'Submit', :class => 'btn btn-lg btn-default' %>
+<% end %>

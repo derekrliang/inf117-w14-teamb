@@ -1,0 +1,42 @@
+<span class="section-header">Admin</span>
+<h4><%= "Welcome, #{@current_user.first_name}. Here you can perform various administrative tasks for #{@current_user.taught_course.title} (course code #{@current_user.taught_course.id})" %></h4>
+
+<hr>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="well well-sm text-center">
+      <h4>Download Responses</h4>
+
+      <p>Generate a PDF file containing the responses from students in your class</p>
+      <%= link_to 'Download PDF', generate_report_path, class: 'btn btn-info btn-lg' %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="well well-sm text-center">
+      <h4>View Current Roster</h4>
+
+      <p>Look at your roster for the current class.</p>
+      <%= link_to 'Roster', users_path, class: 'btn btn-info btn-lg' %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="well well-sm text-center">
+      <h4>Delete Responses</h4>
+
+      <p>Permanently delete all responses from students in your class</p>
+      <%= link_to "Delete All", delete_course_responses_path, method: :delete, confirm: "Are you sure you want to reset the responses of all students in your class?", class: 'btn btn-danger btn-lg' %>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="well well-sm text-center">
+      <h4>Class Announcements</h4>
+
+      <p>Access and modify announcements displayed to your class</p>
+      <%= link_to 'Edit', announcements_path, class: 'btn btn-info btn-lg' %>
+    </div>
+  </div>
+</div>

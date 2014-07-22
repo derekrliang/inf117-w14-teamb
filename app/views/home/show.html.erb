@@ -1,0 +1,51 @@
+<span class="section-header">Home</span>
+<script type="text/JavaScript">
+<!--
+$(document).ready(function() {
+	setTimeout("location.reload(true);",5000);
+});
+//   -->
+</script>
+<hr>
+
+<div class="row">
+  <div class="col-lg-12 text-center">
+    <div class="well">
+      <h3>Class Announcements</h3>
+      <% if @latest_announcement != nil %>
+          <%= @time.strftime("%b ") + ActiveSupport::Inflector.ordinalize(@time.strftime("%d").to_i) + @time.strftime(", %Y %I:%M %p") unless @time.blank? %>
+      <% end %>
+      <div class="text-left">
+        <% if @latest_announcement == nil %>
+            No announcements available
+        <% else %>
+            <%= @latest_announcement.content %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="well">
+      <h3>Revise Your Sentences</h3>
+      <% if @response.nil? %>
+          No responses to revise
+      <% else %>
+          <p>Review responses your classmates have submitted! Don't forget to give constructive
+            criticism and rate each sentence.</p>
+          <%= link_to 'Revise', revise_response_path, class: 'btn btn-info btn-lg' %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="well">
+      <h3>Peer Review</h3>
+
+      <p>Review responses your classmates have submitted! Don't forget to give constructive
+        criticism and rate each sentence.</p>
+      <%= link_to 'Peer Review', review_response_path, class: 'btn btn-info btn-lg' %>
+    </div>
+  </div>
+</div>

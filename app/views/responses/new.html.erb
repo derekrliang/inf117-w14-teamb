@@ -1,0 +1,41 @@
+<span class="section-header"><%= @response.category.title %> Exercise</span>
+
+<hr>
+
+<%= image_tag @response.question.image_url, class: 'img-thumbnail center-div img-responsive' %>
+
+<hr>
+
+<%= form_for @response do |f| %>
+  <h4><%= "Practice writing three sample sentences about the picture above, using the #{@response.category.title} brushstroke" %></h4>
+  
+  <div class="well well-small">
+    <% if @response.errors.any? %>
+      <div class="alert">
+        <h4><%= pluralize @response.errors.count, 'Error' %></h4>
+        <ul>
+          <% @response.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label 'Sentence 1' %>
+      <%= f.text_field :sentence1, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'Sentence 2' %>
+      <%= f.text_field :sentence2, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'Sentence 3' %>
+      <%= f.text_field :sentence3, class: 'form-control' %>
+    </div>
+
+    <%= f.submit 'Submit', :class => 'btn btn-default' %>
+  </div>
+<% end %>

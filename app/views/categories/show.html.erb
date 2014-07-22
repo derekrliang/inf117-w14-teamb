@@ -1,0 +1,136 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    var currentExample = 1;
+    var elem = document.getElementById(1);
+    $(elem).show();
+    $('#previousbutton').hide();
+    
+    $('#nextbutton').click(function() {
+      $('#previousbutton').show();
+      
+      var elem = document.getElementById(currentExample);
+      $(elem).hide();
+      currentExample = currentExample + 1;
+      var elem = document.getElementById(currentExample);
+
+      $(elem).show();
+
+      if (currentExample == 3) {
+        $('#nextbutton').hide();
+      }
+    });
+
+    $('#previousbutton').click(function() {
+      $('#nextbutton').show();
+    
+      var elem = document.getElementById(currentExample);
+      $(elem).hide();
+      currentExample--;
+      elem = document.getElementById(currentExample);
+      $(elem).show();
+    
+      if (currentExample == 1) {
+        $('#previousbutton').hide();
+      }
+    });
+  });
+</script>
+
+<h2><%= @category.title %></h2>
+
+<p><%= @category.description %></p>
+
+<hr>
+	
+<div id="1" class="example">
+	<h3>Example 1</h3>	
+	<br>
+	<%= image_tag "http://i.imgur.com/XWedJ9U.jpg", class: 'center-div img-responsive img-thumbnail ' %>
+	<br>
+	<div class="panel panel-success">
+	  <div class="panel-heading">
+	    With Brushstroke
+	  </div>
+  
+	  <div class="panel-body">
+	    <%= @category.good_example1 %>
+	  </div>
+	</div>
+
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      Without Brushstroke
+    </div>
+  
+    <div class="panel-body">
+      <%= @category.bad_example1 %>
+    </div>
+  </div>
+</div>
+
+<div id="2" class="example">
+<h3>Example 2</h3>
+
+<br>
+	
+<%= image_tag "http://i.imgur.com/e71PBW6.jpg", class: 'center-div img-responsive img-thumbnail ' %>
+
+<br>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    With Brushstroke
+  </div>
+  
+  <div class="panel-body">
+    <%= @category.good_example2 %>
+  </div>
+</div>
+
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    Without Brushstroke
+  </div>
+  
+  <div class="panel-body">
+<%= @category.bad_example2 %>
+</div>
+</div>
+</div>
+
+
+<div id="3" class="example">
+<h3>Example 3</h3>	
+
+<br>
+
+<%= image_tag "http://i.imgur.com/giIssYN.jpg", class: 'center-div img-responsive img-thumbnail ' %>
+<br>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    With Brushstroke
+  </div>
+  
+  <div class="panel-body">
+    <%= @category.good_example3 %>
+  </div>
+</div>
+
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    Without Brushstroke
+  </div>
+  
+  <div class="panel-body">
+<%= @category.bad_example3 %>
+</div>
+</div>
+</div>
+
+<br>
+
+<a class="btn btn-primary btn-lg example-nav-button" id="previousbutton" role="button">Previous</a>
+<a class="btn btn-primary btn-lg example-nav-button" id="nextbutton" role="button">Next</a>
+
+<%= link_to 'Try it yourself!', new_response_path(category_id: @category.id), class: 'btn btn-lg btn-success pull-right' %>

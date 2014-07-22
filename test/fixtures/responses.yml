@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sentence1: MyString
+  sentence2: MyString
+  sentence3: MyString
+  question_id: 1
+  user_id: 
+  reviewer_id: 
+  revised_sentence2: MyString
+  revised_sentence3: MyString
+  question_id: 1
+  best_sentence: 1
+  worst_sentence: 1
+  best_sentence_feedback: MyString
+  worst_sentence_feedback: MyString
+
+two:
+  sentence1: MyString
+  sentence2: MyString
+  sentence3: MyString
+  question_id: 1
+  user_id: 
+  reviewer_id: 
+  revised_sentence2: MyString
+  revised_sentence3: MyString
+  question_id: 1
+  best_sentence: 1
+  worst_sentence: 1
+  best_sentence_feedback: MyString
+  worst_sentence_feedback: MyString

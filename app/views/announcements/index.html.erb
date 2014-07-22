@@ -1,0 +1,33 @@
+<h1>Listing Announcements</h1>
+
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th>Active</th>
+    <th>Created at</th>
+    <th>Updated at</th>
+    <th>Content</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @announcements.each do |announcement| %>
+      <tr>
+        <% if announcement == @latest_announcement %>
+            <td>*</td>
+        <% else %>
+            <td></td>
+        <% end %>
+        <td><%= announcement.created_at.strftime("%b ") + ActiveSupport::Inflector.ordinalize(announcement.created_at.strftime("%d").to_i) + announcement.created_at.strftime(", %Y %I:%M %p") unless announcement.created_at.blank? %></td>
+        <td><%= announcement.updated_at.strftime("%b ") + ActiveSupport::Inflector.ordinalize(announcement.updated_at.strftime("%d").to_i) + announcement.updated_at.strftime(", %Y %I:%M %p") unless announcement.updated_at.blank? %></td>
+        <td><%= announcement.content %></td>
+        <td><%= link_to 'Show', announcement %> | <%= link_to 'Edit', edit_announcement_path(announcement) %> | <%= link_to 'Destroy', announcement, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Announcement', new_announcement_path, class: 'btn btn-lg btn-primary' %>

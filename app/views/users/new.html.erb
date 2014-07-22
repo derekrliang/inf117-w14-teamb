@@ -1,0 +1,53 @@
+<% content_for :title do %>Sign Up<% end %>
+
+<% if @user.errors.any? %>
+  <div class="alert">
+    <h4><%= pluralize @user.errors.count, 'Error' %></h4>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<span class="section-header">Sign Up</span>
+
+<hr>
+
+<%= form_for @user do |f| %>
+  <div class="form-group">
+    <%= f.label :username %>
+    <%= f.text_field :username, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">  
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
+  </div>
+  
+  <%= check_box_tag(:instructor) %>
+  <%= label_tag(:instructor, "Create instructor account") %>
+  
+  <br>
+  <br>
+  
+  <%= f.submit 'Submit', :class => 'btn btn-default' %>
+<% end %>
+
+  

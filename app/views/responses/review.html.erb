@@ -1,0 +1,69 @@
+<h1><%= @response.category.title %> Peer Review</h1>
+
+<hr>
+
+<%= image_tag @response.question.image_url, class: 'img-thumbnail center-div' %>
+
+<hr>
+
+<h3>Student Response</h3>
+
+<ul class="list-group">
+  <li class="list-group-item">
+    <span class="badge">Sentence A</span>
+    <%= @response.sentence1 %>
+  </li>
+  
+  <li class="list-group-item">
+    <span class="badge">Sentence B</span>
+    <%= @response.sentence2 %>
+  </li>
+  
+  <li class="list-group-item">
+    <span class="badge">Sentence C</span>
+    <%= @response.sentence3 %>
+  </li>
+</ul>
+
+<hr>
+
+<%= form_for @response do |f| %>
+  <h3>Peer Review</h3>
+  
+  <div class="well well-small">
+    <% if @response.errors.any? %>
+      <div class="alert">
+        <h4><%= pluralize @response.errors.count, 'Error' %></h4>
+        <ul>
+          <% @response.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label 'What was the most effective sentence?' %>
+      <%= f.select :best_sentence, ['Sentence A', 'Sentence B', 'Sentence C'] %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label 'Why did you think this was the most effective sentence?' %>
+      <%= f.text_field :best_sentence_feedback, class: 'form-control' %>
+    </div>
+
+    <hr>
+    
+    <div class="form-group">
+      <%= f.label 'What was the least effective sentence?' %>
+      <%= f.select :worst_sentence, ['Sentence A', 'Sentence B', 'Sentence C'] %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label 'Why did you think this was the least effective sentence?' %>
+      <%= f.text_field :worst_sentence_feedback, class: 'form-control' %>
+    </div>
+
+    <%= f.submit 'Submit', :class => 'btn btn-default' %>
+  </div>
+<% end %>

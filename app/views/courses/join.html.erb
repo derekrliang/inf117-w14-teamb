@@ -1,0 +1,40 @@
+<% if @current_user.is_teacher? %>
+  <%= link_to "Create Course", new_course_path, class: 'btn btn-default pull-right' %>
+  <span class="section-header">Select a Course to Teach</span>
+<% else %>
+  <span class="section-header">Join Course</span>
+<% end %>
+
+<hr>
+
+<% if @current_user.role == 'student' %>
+  <%= form_for @current_user do |f| %>
+    <div class="well well-small">
+      <% if @current_user.errors.any? %>
+        <div class="alert">
+          <h4><%= pluralize @response.errors.count, 'Error' %></h4>
+          <ul>
+            <% @response.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label 'Enter the course code provided by your instructor' %>
+        <%= f.text_field :course_id, class: 'form-control' %>
+      </div>
+
+      <%= f.submit 'Submit', :class => 'btn btn-default' %>
+    </div>
+  <% end %>
+<% else %>
+  <% @courses_without_teachers.each do |course| %>
+    <ul>
+      <li>
+        <%= link_to course.title, teach_course_path(id: course.id) %>
+      </li>
+    </ul>
+  <% end %>
+<% end %>

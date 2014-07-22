@@ -1,0 +1,23 @@
+<span class="section-header">Announcement Preview</span>
+    <hr>
+
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="well">
+          <h3>Class Announcements</h3>
+          <% if @announcement != nil %>
+              <%= @time.strftime("%b ") + ActiveSupport::Inflector.ordinalize(@time.strftime("%d").to_i) + @time.strftime(", %Y %I:%M %p") unless @time.blank? %>
+          <% end %>
+          <div class="text-left">
+            <% if @announcement == nil %>
+                N/A
+            <% else %>
+                <%= @announcement.content %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+<br>
+
+<%= link_to 'Edit', edit_announcement_path(@announcement), class: 'btn btn-lg btn-primary'%> <%= link_to 'Back', announcements_path, class: 'btn btn-lg btn-warning'%>

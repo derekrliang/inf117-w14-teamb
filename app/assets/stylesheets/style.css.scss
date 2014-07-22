@@ -1,0 +1,61 @@
+html, body, h1, h2, h3, h4, h5, h6, p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+.img-responsive
+{
+  max-width: 70%;
+}
+
+.navbar {
+  margin-top: 15px;
+}
+
+.section-header {
+  font-size: 25px;
+  line-height: 28px;
+}
+
+.center-div {
+  display: block;
+  margin: 0 auto;
+}
+
+.navbar {
+  background-color: #3B4D5B;  
+}
+
+a.navbar-brand
+{
+  font-weight: 500;
+  color:white;
+
+}
+
+body > div.container > div > div > nav > div.navbar-header > a
+{
+  font-weight: 500;
+  color: #CBCED2;
+}
+
+.navbar-default .navbar-nav > li > a
+{
+color: #CBCED2;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus
+{
+  color: #ffffff;
+}
+
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: white; 
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: white;
+  background-color: #3B4D5B;
+}
+
